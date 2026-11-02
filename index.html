@@ -1,0 +1,616 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>MGJ Studio Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Portfolio une page : en-tête manifeste, les lames du couteau suisse (compétences), créations en grille, parcours grands comptes, offre, contact */
+:root{
+  --navy:#12375E; --blue:#1F6FB2; --brass:#F2B33D; --bg:#F6F8FB; --card:#FFFFFF; --fg:#0E1E33; --muted:#4E5F78; --line:#DCE3EC; --soft:#E9EFF7;
+  --display:'Unbounded', 'Arial Black', system-ui, sans-serif;
+  --body:'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0B1524;--card:#13213A;--fg:#E8EEF7;--muted:#A3B2C9;--line:#24375A;--soft:#182A47;--navy:#9CC4F0;--blue:#6FA9E8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1524;--card:#13213A;--fg:#E8EEF7;--muted:#A3B2C9;--line:#24375A;--soft:#182A47;--navy:#9CC4F0;--blue:#6FA9E8;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.gut{padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+.wrap{max-width:1160px;margin:0 auto}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.label{font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;line-height:1.05;margin:10px 0 14px;color:var(--navy);text-wrap:balance}
+.lead{color:var(--muted);font-size:17px;max-width:620px;margin:0 0 36px}
+section .wrap{padding-block:88px}
+
+/* hero */
+.hero .wrap{padding-block:56px 72px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:64px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:20px;color:var(--navy)}
+.brand span{font-weight:600;color:var(--blue)}
+.mail{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:12px;background:var(--fg);color:var(--bg);font-weight:700;text-decoration:none}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,7vw,92px);line-height:.98;letter-spacing:-.045em;margin:18px 0 26px;color:var(--navy);max-width:980px;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--brass)}
+.hero p{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:640px;margin:0 0 30px}
+.facts{display:flex;flex-wrap:wrap;gap:10px}
+.facts span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:700}
+.facts b{color:var(--blue)}
+
+/* lames */
+.blades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.blade{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;position:relative;overflow:hidden;transition:transform .25s}
+.blade:hover{transform:translateY(-3px)}
+.blade .ic{width:46px;height:46px;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.blade h3{margin:0 0 6px;font-size:19px}
+.blade p{margin:0;color:var(--muted);font-size:15px}
+.blade::after{content:"";position:absolute;right:-30px;top:22px;width:90px;height:16px;border-radius:0 10px 10px 0;background:var(--brass);opacity:.0;transform:rotate(-30deg);transition:opacity .25s}
+.blade:hover::after{opacity:.9}
+
+/* créations */
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.work{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+.work.wide{grid-column:1 / -1}
+.cover{aspect-ratio:16/8;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.work.wide .cover{aspect-ratio:16/6}
+.wbody{padding:22px 24px 26px;display:flex;flex-direction:column;gap:8px}
+.wbody .meta{font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.wbody h3{margin:0;font-size:22px;letter-spacing:-.01em}
+.wbody p{margin:0;color:var(--muted);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tags span{font-size:12.5px;font-weight:700;background:var(--soft);border-radius:8px;padding:4px 10px}
+
+/* couvertures (univers propres à chaque projet, volontairement fixes) */
+.c-plomb{background:linear-gradient(180deg,#EEF4FF 0 55%,#1557D6 55% 100%)}
+.c-plomb .t{position:absolute;left:0;right:0;bottom:16%;text-align:center;color:#fff;font:800 clamp(18px,2.6vw,30px)/1.1 var(--body);letter-spacing:-.02em}
+.c-plomb .t span{color:#FFD23F}
+.c-plomb svg{position:absolute;top:12%;left:50%;width:44px;margin-left:-22px}
+.c-plomb .tap{position:absolute;right:6%;top:14%;display:flex;flex-direction:column;align-items:center;gap:4px}
+.c-plomb .tap i{display:block;height:10px;border-radius:3px;background:linear-gradient(90deg,#8E9AAB,#E6ECF3,#6F7B8C)}
+.c-uwt{background:#0F0F12}
+.c-uwt .w{font:800 clamp(40px,6vw,72px)/1 var(--display);letter-spacing:-.04em;color:#fff}
+.c-uwt .w span{color:#FF6A2B}
+.c-uwt .ph{position:absolute;right:8%;bottom:-18%;width:22%;aspect-ratio:9/18;border-radius:18px;border:3px solid #2A2A30;background:linear-gradient(180deg,#1B1B20,#26262D)}
+.c-uwt .ph::before{content:"15 min";position:absolute;left:12%;top:16%;font:800 12px var(--body);color:#FF6A2B}
+.c-metre{background:#F3EDE3}
+.c-metre .arch{position:absolute;bottom:0;width:22%;aspect-ratio:1/1.3;border-radius:999px 999px 0 0;background:#1E2A44}
+.c-metre .arch.a{left:10%;background:#C8714B}
+.c-metre .arch.b{right:10%}
+.c-metre .w{position:relative;font:800 clamp(22px,3.4vw,38px)/1 var(--display);letter-spacing:.02em;color:#1E2A44;display:flex;align-items:center;gap:4px}
+.c-metre .w i{display:inline-flex;width:1.1em;height:.8em;border-radius:999px;background:#1E2A44;color:#F3EDE3;font:800 .5em var(--display);align-items:center;justify-content:center;font-style:normal}
+.c-moon{background:radial-gradient(circle at 70% 30%,#3B2B5E,#140F22 70%)}
+.c-moon .m{position:absolute;right:14%;top:16%;width:16%;aspect-ratio:1;border-radius:50%;box-shadow:inset -14px -6px 0 0 #F4D58D}
+.c-moon .w{font:600 clamp(26px,3.6vw,40px)/1 var(--display);color:#F4D58D;letter-spacing:.06em}
+.c-moon .dash{position:absolute;left:8%;bottom:12%;display:flex;gap:6px;align-items:flex-end}
+.c-moon .dash i{display:block;width:12px;border-radius:3px 3px 0 0;background:#7E66C9}
+.c-buck{background:#FF7A1A}
+.c-buck .w{font:800 clamp(34px,5vw,60px)/1 var(--display);color:#1A1A1A;letter-spacing:-.04em}
+.c-buck .ball{position:absolute;left:8%;bottom:-20%;width:34%;aspect-ratio:1;border-radius:50%;border:4px solid #1A1A1A;opacity:.25}
+.c-buck .elo{position:absolute;right:7%;top:14%;background:#1A1A1A;color:#FF7A1A;font:800 13px var(--body);padding:6px 10px;border-radius:8px}
+.c-fit{background:linear-gradient(135deg,#141414,#2B2B2B)}
+.c-fit .w{font:800 clamp(18px,2.6vw,28px)/1.15 var(--display);color:#fff;text-align:center;letter-spacing:.02em}
+.c-fit .w span{display:block;color:#E8C547;font-size:.6em;letter-spacing:.3em;margin-top:8px}
+.c-photo{background:#EDE6DA}
+.c-photo .f{position:absolute;width:30%;aspect-ratio:4/5;background:#FFF;padding:6px 6px 22px;box-shadow:0 10px 24px -10px rgba(0,0,0,.35)}
+.c-photo .f i{display:block;width:100%;height:100%;background:linear-gradient(160deg,#D9CBB6,#B9A387)}
+.c-photo .f.a{left:18%;transform:rotate(-7deg)}
+.c-photo .f.b{right:18%;transform:rotate(6deg)}
+.c-it{background:#0E1E33}
+.c-it .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:62%}
+.c-it .grid i{display:flex;align-items:center;justify-content:center;aspect-ratio:1.6;border-radius:12px;background:#17304F;color:#9CC4F0;font:700 12px var(--body);font-style:normal;text-align:center;padding:4px}
+
+/* équipe */
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.person{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;display:flex;gap:18px;align-items:flex-start}
+.person .av{flex:none;width:64px;height:64px;border-radius:20px;background:#12375E;color:#fff;display:flex;align-items:center;justify-content:center;font:800 20px var(--display)}
+.person .av.alt{background:#F2B33D;color:#0E1E33}
+.person h3{margin:0;font-size:20px}
+.person .role{font-size:14px;font-weight:700;color:var(--blue);margin:2px 0 8px}
+.person p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:680px){.team{grid-template-columns:minmax(0,1fr)}}
+
+/* parcours */
+.timeline{display:grid;gap:12px}
+.job{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.job .who{font-family:var(--display);font-weight:800;font-size:20px;color:var(--navy);letter-spacing:-.02em}
+.job h3{margin:0 0 4px;font-size:17px}
+.job p{margin:0;color:var(--muted);font-size:15px}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.stack span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+
+/* offre */
+.offer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.offer div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.offer h3{margin:0 0 4px;font-size:18px}
+.offer .p{font-family:var(--display);font-weight:800;font-size:24px;color:var(--navy);margin:8px 0}
+.offer p{margin:0;color:var(--muted);font-size:14.5px}
+
+/* contact */
+.contact{background:#12375E;color:#fff}
+.contact .wrap{display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+.contact h2{color:#fff;margin:0}
+.contact p{color:#C9D6EE;margin:10px 0 0}
+.ct-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.ct-box .addr{font-size:20px;font-weight:800;user-select:all}
+.ct-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ct-l{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B9CBE3}
+.ct-box button{align-self:flex-start;min-height:44px;padding:0 18px;border-radius:12px;border:0;background:#F2B33D;color:#0E1E33;font:800 15px var(--body);cursor:pointer}
+footer{font-size:13.5px;color:var(--muted)}
+footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+
+@media (max-width:900px){
+  .blades{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .offer{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:680px){
+  .blades,.works,.offer{grid-template-columns:minmax(0,1fr)}
+  .work.wide .cover{aspect-ratio:16/8}
+  .job{grid-template-columns:minmax(0,1fr);gap:6px}
+  .top{margin-bottom:40px}
+}
+@media (prefers-reduced-motion:reduce){.blade,.blade::after{transition:none}}
+
+/* navigation fixe, CTA, actions contact, retour en haut */
+[id]{scroll-margin-top:76px}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:18px;min-height:64px}
+.nav-brand{font-family:var(--display);font-weight:800;font-size:17px;color:var(--navy);text-decoration:none;white-space:nowrap}
+.nav-brand span{font-weight:600;color:var(--blue)}
+.nav-links{display:flex;gap:4px;flex:1;justify-content:center}
+.nav-links a{color:var(--fg);text-decoration:none;font-weight:700;font-size:14.5px;padding:8px 12px;border-radius:10px;white-space:nowrap}
+.nav-links a:hover,.nav-links a.on{background:var(--soft);color:var(--blue)}
+.nav-act{display:flex;gap:8px;align-items:center;margin-left:auto}
+.nav-lang{min-height:40px;min-width:44px;padding:0 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--fg);font:800 13.5px var(--body);letter-spacing:.06em;cursor:pointer}
+.nav-lang:hover{border-color:var(--blue);color:var(--blue)}
+.nav-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:10px;background:var(--brass);color:#0E1E33;font-weight:800;font-size:14.5px;text-decoration:none;white-space:nowrap}
+.hero .top{margin-bottom:48px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:14px;font-weight:800;font-size:16px;text-decoration:none}
+.btn-p{background:var(--navy);color:var(--bg)}
+.btn-s{background:var(--brass);color:#0E1E33}
+.ct-act{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid rgba(255,255,255,.18)}
+.ct-btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border-radius:12px;background:#F2B33D;color:#0E1E33;font-weight:800;font-size:15px;text-decoration:none}
+.ct-btn+.ct-btn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.ct-box button.cp{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);min-height:40px;font-size:14px}
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:40;width:46px;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--navy);box-shadow:0 8px 24px -10px rgba(0,0,0,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.totop.show{opacity:1;pointer-events:auto}
+@media (max-width:900px){
+  .nav-in{flex-wrap:wrap;gap:6px 12px;padding-block:8px}
+  .nav-links{order:3;flex:1 0 100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin:0 -6px}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{padding:6px 10px;font-size:14px}
+  [id]{scroll-margin-top:112px}
+}
+@media (max-width:420px){.nav-cta{padding:0 12px;font-size:14px}.btn{flex:1 1 100%}}
+@media (prefers-reduced-motion:reduce){.totop{transition:none}}
+</style>
+<div id="v-fr" lang="fr">
+<nav class="nav gut" aria-label="Navigation"><div class="wrap nav-in">
+  <a class="nav-brand" href="#top" aria-label="MGJ Studio">MGJ <span>studio</span></a>
+  <div class="nav-links"><a href="#services">Services</a><a href="#creations">Créations</a><a href="#equipe">Équipe</a><a href="#parcours">Parcours</a><a href="#tarifs">Tarifs</a></div>
+  <div class="nav-act"><button type="button" class="nav-lang" data-lang="en" title="Switch to English" aria-label="Switch to English">EN</button><a class="nav-cta" href="#contact">Me contacter</a></div>
+</div></nav>
+
+<header class="hero gut" id="top">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <svg width="56" height="48" viewBox="0 0 280 240" aria-hidden="true">
+          <g transform="rotate(-40 186 92)"><path d="M186 80 H262 Q292 88 292 92 Q292 96 262 104 H186 Z" fill="#1F6FB2"/></g>
+          <rect x="24" y="66" width="192" height="150" rx="40" fill="#12375E"/>
+          <text x="120" y="163" text-anchor="middle" font-family="Unbounded, sans-serif" font-weight="800" font-size="60" fill="#FFFFFF" letter-spacing="-2">MGJ</text>
+          <circle cx="186" cy="92" r="8" fill="#F2B33D"/>
+        </svg>
+        MGJ <span>studio</span>
+      </div>
+      
+    </div>
+    <div class="label">Manuel Greffine · Fondateur de MGJ Studio</div>
+    <h1>Le couteau suisse <em>du digital.</em></h1>
+    <p>Dix ans d'IT dans les grands comptes, aujourd'hui au service des entrepreneurs : je conçois des sites, des applications et des identités visuelles, et je sais ce qui se passe sous le capot.</p>
+    <div class="facts">
+      <span><b>10+ ans</b> d'IT en grands comptes</span>
+      <span><b>Ingénieur</b> systèmes &amp; réseaux</span>
+      <span><b>Sites</b> animés sur-mesure</span>
+      <span><b>Apps</b> web &amp; mobile</span>
+      <span>Basé en <b>Île-de-France</b></span>
+    </div>
+    <div class="hero-cta"><a class="btn btn-p" href="#creations">Voir mes créations</a><a class="btn btn-s" href="#contact">Demander un devis gratuit</a></div>
+
+  </div>
+</header>
+
+<section class="gut" id="services" style="background:var(--card);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="label">Ce que je fais</div>
+    <h2>Une lame pour chaque besoin</h2>
+    <p class="lead">Un seul interlocuteur, du logo à la mise en ligne, et jusqu'à la maintenance.</p>
+    <div class="blades">
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><h3>Sites web animés</h3><p>Vitrines sur-mesure avec animations au scroll, pensées pour faire appeler.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Applications</h3><p>Web et mobile, du prototype cliquable à la plateforme avec back-office.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div><h3>Identité visuelle</h3><p>Logos, déclinaisons, chartes et supports imprimés.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-7-7 18-2-8-9-3z"/></svg></div><h3>Communication</h3><p>Fiche Google, réseaux sociaux, pitch decks et présentations.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 8h4M7 11h7"/></svg></div><h3>IT &amp; Digital Workplace</h3><p>Microsoft 365, Intune, Jamf, migrations et automatisation PowerShell.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h3>Photo &amp; vidéo</h3><p>Contenus pour vos réseaux et votre site, réalisés avec Halima Guyot.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="equipe">
+  <div class="wrap">
+    <div class="label">L'équipe</div>
+    <h2>Deux profils, un seul interlocuteur</h2>
+    <p class="lead">La technique et le design d'un côté, l'image et les réseaux de l'autre.</p>
+    <div class="team">
+      <article class="person"><div class="av">MG</div><div><h3>Manuel Greffine</h3><div class="role">Fondateur · Sites, applications &amp; IT</div><p>Ingénieur systèmes et réseaux, 10 ans de chefferie de projet IT en grands comptes. Conçoit et développe les sites, les applis et les identités visuelles.</p></div></article>
+      <article class="person"><div class="av alt">HG</div><div><h3>Halima Guyot</h3><div class="role">Community manager · Vidéaste &amp; photographe</div><p>Gère vos réseaux sociaux et produit les photos et vidéos qui les font vivre : tournages, reportages, contenus courts.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="creations" style="padding-top:0">
+  <div class="wrap">
+    <div class="label">Créations</div>
+    <h2>Quelques projets</h2>
+    <p class="lead">Sites, applications, marques et concepts produits menés de bout en bout.</p>
+    <div class="works">
+      <article class="work wide">
+        <div class="cover c-plomb" aria-hidden="true">
+          <svg viewBox="0 0 64 88"><path d="M32 2 C32 2 4 38 4 58 a28 28 0 0 0 56 0 C60 38 32 2 32 2z" fill="#1557D6"/></svg>
+          <div class="tap"><i style="width:44px"></i><i style="width:32px"></i><i style="width:38px;height:24px"></i></div>
+          <div class="t">On coupe l'eau, <span>on règle le problème.</span></div>
+        </div>
+        <div class="wbody">
+          <div class="meta">Site vitrine · Artisan plombier · 2026</div>
+          <h3>Site animé au scroll pour un plombier</h3>
+          <p>Quatre récits animés qui racontent le métier : la goutte qui fait monter l'eau, le robinet éclaté pièce par pièce, le plan du réseau où la fuite est trouvée, et l'avant / après d'une salle de bain. Devis en ligne et version mobile.</p>
+          <div class="tags"><span>Design</span><span>Animation scroll</span><span>Développement</span><span>Communication</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="cover c-uwt" aria-hidden="true"><div class="w">U<span>W</span>T</div><div class="ph"></div></div>
+        <div class="wbody">
+          <div class="meta">Plateforme · Sport · Projet personnel</div>
+          <h3>UWT, le coaching sportif à la demande</h3>
+          <p>Un coach chez vous en 15 minutes. Plateforme web, back-office d'administration, prototype mobile, landing page et pitch deck. Marque déposée à l'INPI.</p>
+          <div class="tags"><span>Produit</span><span>Web app</span><span>Back-office</span><span>Pitch</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="cover c-metre" aria-hidden="true"><div class="arch a"></div><div class="arch b"></div><div class="w"><i>M</i>ÉTRÉVIA</div></div>
+        <div class="wbody">
+          <div class="meta">Marketplace · Pour Espace IDEA</div>
+          <h3>Métrévia, l'« Uber du métré »</h3>
+          <p>Mise en relation des cuisinistes avec des métreurs qualifiés : identité visuelle, maquette fonctionnelle UX, architecture technique et présentation client.</p>
+          <div class="tags"><span>Identité</span><span>UX</span><span>Architecture</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="cover c-moon" aria-hidden="true"><div class="m"></div><div class="w">MOONLIGHT</div><div class="dash"><i style="height:18px"></i><i style="height:30px"></i><i style="height:24px"></i><i style="height:40px"></i></div></div>
+        <div class="wbody">
+          <div class="meta">Application · Restaurant · Paris 13e</div>
+          <h3>Moonlight Manager</h3>
+          <p>Application de gestion sur-mesure pour un restaurant parisien, et accompagnement sur sa présence digitale.</p>
+          <div class="tags"><span>Web app</span><span>Dashboard</span><span>Réseaux sociaux</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="cover c-buck" aria-hidden="true"><div class="ball"></div><div class="w">BUCKPOT</div><div class="elo">ELO 1 840</div></div>
+        <div class="wbody">
+          <div class="meta">Concept produit · Streetball</div>
+          <h3>BuckPot</h3>
+          <p>Appli de défis de basket de rue en 1v1 à 5v5 avec classement ELO et titre de « Boss du quartier ». Maquette interactive et pitch deck.</p>
+          <div class="tags"><span>Concept</span><span>Maquette</span><span>Pitch deck</span></div>
+        </div>
+      </article>
+
+      <article class="work wide">
+        <div class="cover c-fit" aria-hidden="true"><div class="w">URBAN WORKOUT TRAINER<span>COMMUNAUTÉ</span></div></div>
+        <div class="wbody">
+          <div class="meta">Communauté · Instagram</div>
+          <h3>Urban Workout Trainer</h3>
+          <p>Communauté fitness sur Instagram, à l'origine du projet UWT. Contenus, animation et coaching.</p>
+          <div class="tags"><span>Contenu</span><span>Réseaux sociaux</span></div>
+          <span style="font-weight:700;margin-top:6px;color:var(--blue)">Instagram · @urban_workout_trainer</span>
+        </div>
+      </article>
+
+
+      <article class="work wide">
+        <div class="cover c-it" aria-hidden="true"><div class="grid"><i>Microsoft 365</i><i>Intune</i><i>Jamf Pro</i><i>MECM</i><i>Power BI</i><i>PowerShell</i></div></div>
+        <div class="wbody">
+          <div class="meta">IT · Grands comptes</div>
+          <h3>Digital Workplace &amp; déploiements</h3>
+          <p>Migrations Microsoft 365, déploiement du nouvel Outlook, intégration de Copilot, gestion des parcs Windows et Mac, tableaux de bord Power BI, et les supports de formation qui vont avec.</p>
+          <div class="tags"><span>Chef de projet</span><span>Tech lead</span><span>Formation</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="parcours" style="background:var(--card);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="label">Parcours</div>
+    <h2>Ils m'ont fait confiance</h2>
+    <p class="lead">Une rigueur de grand compte, mise au service des entrepreneurs.</p>
+    <div class="timeline">
+      <div class="job"><div class="who">RATP</div><div><h3>Chef de projet Microsoft 365 &amp; Tech Lead · depuis janv. 2026</h3><p>Pilotage des projets Microsoft 365 pour plus de 50 000 agents : M365 Apps, nouvel Outlook, migration Office 64 bits, cadrage Copilot, tableaux de bord Power BI et Power Apps. Référent Exchange, Outlook et Copilot.</p></div></div>
+      <div class="job"><div class="who">STET &amp; BPCE IT / Natixis</div><div><h3>Chef de projet Digital Workplace &amp; Mobilité · 2022 – 2026</h3><p>Migration Windows 11 de bout en bout, Zero-Touch Autopilot et co-management Intune / SCCM, impression sécurisée. Migration d'une infrastructure MDM bancaire de plus de 5 000 utilisateurs (Intune, Apple Business Manager, Jamf).</p></div></div>
+      <div class="job"><div class="who">BearingPoint</div><div><h3>Chef de projet IT &amp; Ingénieur systèmes · 2018 – 2021</h3><p>Migration Office 365, Teams et OneDrive, masters Windows 10 via SCCM, administration Jamf Pro du parc macOS, support VIP pour plus de 3 000 utilisateurs.</p></div></div>
+      <div class="job"><div class="who">AFPA</div><div><h3>Chef de projet IT Digital Workplace · 2015 – 2018</h3><p>Pilotage national de la transformation numérique des centres de formation : poste pédagogique déployé sur plusieurs sites pour plus de 1 000 stagiaires, migration Windows 10, Intune et Azure AD, téléphonie Teams.</p></div></div>
+    </div>
+    <div class="stack"><span>Microsoft 365</span><span>Intune</span><span>MECM</span><span>Jamf Pro</span><span>Apple Business Manager</span><span>PowerShell</span><span>Power BI / Power Apps</span><span>Gouvernance projet (DAT, CAB, PAQ)</span><span>HTML / CSS / JS</span><span>Claude Code</span></div>
+    <div class="stack" style="margin-top:12px"><span><b>Ingénieur Systèmes &amp; Réseaux</b> · GEFI 2015</span><span><b>Microsoft Certified</b> · Modern Desktop Administrator</span><span><b>Microsoft Certified</b> · Azure Administrator Associate</span><span>ITIL · ISO 27001</span></div>
+  </div>
+</section>
+
+<section class="gut" id="tarifs">
+  <div class="wrap">
+    <div class="label">Offre</div>
+    <h2>Tarifs indicatifs</h2>
+    <p class="lead">Chaque projet commence par un échange gratuit et un devis précis.</p>
+    <div class="offer">
+      <div><h3>Site vitrine</h3><div class="p">dès 1 500 €</div><p>Sur-mesure animé de 3 000 à 5 000 €, e-commerce dès 4 000 €.</p></div>
+      <div><h3>Logo &amp; identité</h3><div class="p">dès 350 €</div><p>Logo + déclinaisons dès 600 €, identité complète dès 1 200 €.</p></div>
+      <div><h3>Application</h3><div class="p">dès 6 000 €</div><p>MVP web ou mobile, évolutions et interventions à 65 €/h.</p></div>
+      <div><h3>Maintenance</h3><div class="p">dès 59 €/mois</div><p>Hébergement, sécurité, mises à jour. Confort 119 €, Premium 249 €/mois.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact gut" id="contact">
+  <div class="wrap">
+    <div>
+      <div class="label" style="color:#F2B33D">Contact</div>
+      <h2>Un projet en tête&nbsp;? Parlons-en.</h2>
+      <p>Réponse sous 48 h, premier échange gratuit.</p>
+    </div>
+    <div class="ct-box">
+      <div class="ct-act">
+        <a class="ct-btn" href="mailto:manuel.greffine@gmail.com?subject=Projet%20avec%20MGJ%20Studio&amp;body=Bonjour%20Manuel%2C%0A%0AJe%20vous%20contacte%20au%20sujet%20d%27un%20projet%20%3A%0A" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Écrire un e-mail</a>
+        <a class="ct-btn" href="tel:+33621824772" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Appeler</a>
+        <a class="ct-btn" href="https://wa.me/33621824772" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg>WhatsApp</a>
+      </div>
+            <div class="ct-row"><div><div class="ct-l">E-mail</div><div class="addr" id="addr">manuel.greffine@gmail.com</div></div><button type="button" class="cp" data-copy="addr" data-ok="Copié">Copier</button></div>
+      <div class="ct-row"><div><div class="ct-l">Téléphone</div><div class="addr" id="tel">06 21 82 47 72</div></div><button type="button" class="cp" data-copy="tel" data-ok="Copié">Copier</button></div>
+    </div>
+  </div>
+</section>
+
+<footer class="gut"><div class="wrap"><span>© 2026 MGJ Studio · Manuel Greffine — EI · SIRET 821 085 503 00059</span><span>Sites · Apps · Identité · IT</span></div></footer>
+
+</div>
+<div id="v-en" lang="en" hidden>
+<nav class="nav gut" aria-label="Navigation"><div class="wrap nav-in">
+  <a class="nav-brand" href="#top-en" aria-label="MGJ Studio">MGJ <span>studio</span></a>
+  <div class="nav-links"><a href="#services-en">Services</a><a href="#creations-en">Work</a><a href="#equipe-en">Team</a><a href="#parcours-en">Experience</a><a href="#tarifs-en">Pricing</a></div>
+  <div class="nav-act"><button type="button" class="nav-lang" data-lang="fr" title="Passer en français" aria-label="Passer en français">FR</button><a class="nav-cta" href="#contact-en">Contact me</a></div>
+</div></nav>
+
+<header class="hero gut" id="top-en">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <svg width="56" height="48" viewBox="0 0 280 240" aria-hidden="true">
+          <g transform="rotate(-40 186 92)"><path d="M186 80 H262 Q292 88 292 92 Q292 96 262 104 H186 Z" fill="#1F6FB2"/></g>
+          <rect x="24" y="66" width="192" height="150" rx="40" fill="#12375E"/>
+          <text x="120" y="163" text-anchor="middle" font-family="Unbounded, sans-serif" font-weight="800" font-size="60" fill="#FFFFFF" letter-spacing="-2">MGJ</text>
+          <circle cx="186" cy="92" r="8" fill="#F2B33D"/>
+        </svg>
+        MGJ <span>studio</span>
+      </div>
+      
+    </div>
+    <div class="label">Manuel Greffine · Founder of MGJ Studio</div>
+    <h1>The Swiss army knife <em>of digital.</em></h1>
+    <p>Ten years of IT in large enterprises, now working for entrepreneurs: I design websites, apps and brand identities, and I know what happens under the hood.</p>
+    <div class="facts">
+      <span><b>10+ years</b> of enterprise IT</span>
+      <span><b>Systems &amp; network</b> engineer</span>
+      <span><b>Custom</b> animated websites</span>
+      <span><b>Web &amp; mobile</b> apps</span>
+      <span>Based in <b>Paris area</b>, France</span>
+    </div>
+    <div class="hero-cta"><a class="btn btn-p" href="#creations-en">See my work</a><a class="btn btn-s" href="#contact-en">Get a free quote</a></div>
+
+  </div>
+</header>
+
+<section class="gut" id="services-en" style="background:var(--card);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="label">What I do</div>
+    <h2>A blade for every need</h2>
+    <p class="lead">One point of contact, from the logo to launch, and all the way to maintenance.</p>
+    <div class="blades">
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><h3>Animated websites</h3><p>Custom showcase sites with scroll animations, built to make the phone ring.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Apps</h3><p>Web and mobile, from clickable prototype to full platform with admin back-office.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div><h3>Brand identity</h3><p>Logos, variations, brand guidelines and print materials.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-7-7 18-2-8-9-3z"/></svg></div><h3>Communication</h3><p>Google Business profile, social media, pitch decks and presentations.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 8h4M7 11h7"/></svg></div><h3>IT &amp; Digital Workplace</h3><p>Microsoft 365, Intune, Jamf, migrations and PowerShell automation.</p></article>
+      <article class="blade"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F6FB2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h3>Photo &amp; video</h3><p>Content for your social media and website, produced with Halima Guyot.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="equipe-en">
+  <div class="wrap">
+    <div class="label">The team</div>
+    <h2>Two profiles, one point of contact</h2>
+    <p class="lead">Tech and design on one side, visuals and social media on the other.</p>
+    <div class="team">
+      <article class="person"><div class="av">MG</div><div><h3>Manuel Greffine</h3><div class="role">Founder · Websites, apps &amp; IT</div><p>Systems and network engineer with 10 years of IT project management in large enterprises. Designs and builds the websites, apps and brand identities.</p></div></article>
+      <article class="person"><div class="av alt">HG</div><div><h3>Halima Guyot</h3><div class="role">Community manager · Videographer &amp; photographer</div><p>Runs your social media and produces the photos and videos that bring it to life: shoots, reports, short-form content.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="creations-en" style="padding-top:0">
+  <div class="wrap">
+    <div class="label">Work</div>
+    <h2>Selected projects</h2>
+    <p class="lead">Websites, apps, brands and product concepts, delivered end to end.</p>
+    <div class="works">
+      <article class="work wide">
+        <div class="cover c-plomb" aria-hidden="true">
+          <svg viewBox="0 0 64 88"><path d="M32 2 C32 2 4 38 4 58 a28 28 0 0 0 56 0 C60 38 32 2 32 2z" fill="#1557D6"/></svg>
+          <div class="tap"><i style="width:44px"></i><i style="width:32px"></i><i style="width:38px;height:24px"></i></div>
+          <div class="t">We shut off the water, <span>we fix the problem.</span></div>
+        </div>
+        <div class="wbody">
+          <div class="meta">Showcase site · Plumber · 2026</div>
+          <h3>Scroll-animated website for a plumber</h3>
+          <p>Four animated stories that tell the trade: a drop that makes the water rise, a tap exploded part by part, a pipe network where the leak is found, and a bathroom before / after. Online quote form and mobile version.</p>
+          <div class="tags"><span>Design</span><span>Scroll animation</span><span>Development</span><span>Communication</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="cover c-uwt" aria-hidden="true"><div class="w">U<span>W</span>T</div><div class="ph"></div></div>
+        <div class="wbody">
+          <div class="meta">Platform · Sport · Own project</div>
+          <h3>UWT, on-demand personal training</h3>
+          <p>A coach at your door in 15 minutes. Web platform, admin back-office, mobile prototype, landing page and pitch deck. Trademark registered in France (INPI).</p>
+          <div class="tags"><span>Product</span><span>Web app</span><span>Back-office</span><span>Pitch</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="cover c-metre" aria-hidden="true"><div class="arch a"></div><div class="arch b"></div><div class="w"><i>M</i>ÉTRÉVIA</div></div>
+        <div class="wbody">
+          <div class="meta">Marketplace · For Espace IDEA</div>
+          <h3>Métrévia, the “Uber of site measurement”</h3>
+          <p>Connects kitchen designers with qualified site measurers: brand identity, functional UX mockup, technical architecture and client presentation.</p>
+          <div class="tags"><span>Identity</span><span>UX</span><span>Architecture</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="cover c-moon" aria-hidden="true"><div class="m"></div><div class="w">MOONLIGHT</div><div class="dash"><i style="height:18px"></i><i style="height:30px"></i><i style="height:24px"></i><i style="height:40px"></i></div></div>
+        <div class="wbody">
+          <div class="meta">App · Restaurant · Paris</div>
+          <h3>Moonlight Manager</h3>
+          <p>Custom management app for a Paris restaurant, plus support on its digital presence.</p>
+          <div class="tags"><span>Web app</span><span>Dashboard</span><span>Social media</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="cover c-buck" aria-hidden="true"><div class="ball"></div><div class="w">BUCKPOT</div><div class="elo">ELO 1 840</div></div>
+        <div class="wbody">
+          <div class="meta">Product concept · Streetball</div>
+          <h3>BuckPot</h3>
+          <p>Street basketball challenge app, from 1v1 to 5v5, with ELO ranking and a “Neighbourhood Boss” title. Interactive mockup and pitch deck.</p>
+          <div class="tags"><span>Concept</span><span>Mockup</span><span>Pitch deck</span></div>
+        </div>
+      </article>
+
+      <article class="work wide">
+        <div class="cover c-fit" aria-hidden="true"><div class="w">URBAN WORKOUT TRAINER<span>COMMUNITY</span></div></div>
+        <div class="wbody">
+          <div class="meta">Community · Instagram</div>
+          <h3>Urban Workout Trainer</h3>
+          <p>Fitness community on Instagram and the origin of the UWT project. Content, engagement and coaching.</p>
+          <div class="tags"><span>Content</span><span>Social media</span></div>
+          <span style="font-weight:700;margin-top:6px;color:var(--blue)">Instagram · @urban_workout_trainer</span>
+        </div>
+      </article>
+
+
+      <article class="work wide">
+        <div class="cover c-it" aria-hidden="true"><div class="grid"><i>Microsoft 365</i><i>Intune</i><i>Jamf Pro</i><i>MECM</i><i>Power BI</i><i>PowerShell</i></div></div>
+        <div class="wbody">
+          <div class="meta">IT · Large enterprises</div>
+          <h3>Digital Workplace &amp; deployments</h3>
+          <p>Microsoft 365 migrations, new Outlook rollout, Copilot integration, Windows and Mac fleet management, Power BI dashboards, and the training materials that go with them.</p>
+          <div class="tags"><span>Project manager</span><span>Tech lead</span><span>Training</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="parcours-en" style="background:var(--card);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="label">Experience</div>
+    <h2>Companies I've worked with</h2>
+    <p class="lead">Enterprise-grade rigour, put to work for entrepreneurs.</p>
+    <div class="timeline">
+      <div class="job"><div class="who">RATP</div><div><h3>Microsoft 365 Project Manager &amp; Tech Lead · since Jan 2026</h3><p>Leading Microsoft 365 projects for 50,000+ employees: M365 Apps, new Outlook, Office 64-bit migration, Copilot scoping, Power BI and Power Apps dashboards. Go-to expert for Exchange, Outlook and Copilot.</p></div></div>
+      <div class="job"><div class="who">STET &amp; BPCE IT / Natixis</div><div><h3>Digital Workplace &amp; Mobility Project Manager · 2022 – 2026</h3><p>End-to-end Windows 11 migration, Zero-Touch Autopilot and Intune / SCCM co-management, secure printing. Migration of a banking MDM infrastructure for 5,000+ users (Intune, Apple Business Manager, Jamf).</p></div></div>
+      <div class="job"><div class="who">BearingPoint</div><div><h3>IT Project Manager &amp; Systems Engineer · 2018 – 2021</h3><p>Office 365, Teams and OneDrive migration, Windows 10 images via SCCM, Jamf Pro administration of the macOS fleet, VIP support for 3,000+ users.</p></div></div>
+      <div class="job"><div class="who">AFPA</div><div><h3>IT Digital Workplace Project Manager · 2015 – 2018</h3><p>Led the nationwide digital transformation of training centres: learning workstation rolled out across several sites for 1,000+ trainees, Windows 10 migration, Intune and Azure AD, Teams telephony.</p></div></div>
+    </div>
+    <div class="stack"><span>Microsoft 365</span><span>Intune</span><span>MECM</span><span>Jamf Pro</span><span>Apple Business Manager</span><span>PowerShell</span><span>Power BI / Power Apps</span><span>Project governance (architecture docs, CAB, QA plans)</span><span>HTML / CSS / JS</span><span>Claude Code</span></div>
+    <div class="stack" style="margin-top:12px"><span><b>Systems &amp; Network Engineering degree</b> · GEFI 2015</span><span><b>Microsoft Certified</b> · Modern Desktop Administrator</span><span><b>Microsoft Certified</b> · Azure Administrator Associate</span><span>ITIL · ISO 27001</span></div>
+  </div>
+</section>
+
+<section class="gut" id="tarifs-en">
+  <div class="wrap">
+    <div class="label">Pricing</div>
+    <h2>Indicative rates</h2>
+    <p class="lead">Every project starts with a free call and a detailed quote.</p>
+    <div class="offer">
+      <div><h3>Showcase website</h3><div class="p">from €1,500</div><p>Custom animated €3,000 – €5,000, e-commerce from €4,000.</p></div>
+      <div><h3>Logo &amp; identity</h3><div class="p">from €350</div><p>Logo + variations from €600, full identity from €1,200.</p></div>
+      <div><h3>App</h3><div class="p">from €6,000</div><p>Web or mobile MVP, updates and support at €65/h.</p></div>
+      <div><h3>Maintenance</h3><div class="p">from €59/month</div><p>Hosting, security, updates. Comfort €119, Premium €249/month.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact gut" id="contact-en">
+  <div class="wrap">
+    <div>
+      <div class="label" style="color:#F2B33D">Contact</div>
+      <h2>Got a project in mind? Let's talk.</h2>
+      <p>Reply within 48 hours, first call is free.</p>
+    </div>
+    <div class="ct-box">
+      <div class="ct-act">
+        <a class="ct-btn" href="mailto:manuel.greffine@gmail.com?subject=Project%20with%20MGJ%20Studio&amp;body=Hello%20Manuel%2C%0A%0AI%27m%20getting%20in%20touch%20about%20a%20project%3A%0A" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Send an email</a>
+        <a class="ct-btn" href="tel:+33621824772" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+        <a class="ct-btn" href="https://wa.me/33621824772" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg>WhatsApp</a>
+      </div>
+            <div class="ct-row"><div><div class="ct-l">Email</div><div class="addr" id="addr-en">manuel.greffine@gmail.com</div></div><button type="button" class="cp" data-copy="addr-en" data-ok="Copied">Copy</button></div>
+      <div class="ct-row"><div><div class="ct-l">Phone</div><div class="addr" id="tel-en">06 21 82 47 72</div></div><button type="button" class="cp" data-copy="tel-en" data-ok="Copied">Copy</button></div>
+    </div>
+  </div>
+</section>
+
+<footer class="gut"><div class="wrap"><span>© 2026 MGJ Studio · Manuel Greffine — sole trader (France) · SIRET 821 085 503 00059</span><span>Websites · Apps · Identity · IT</span></div></footer>
+
+</div>
+<script>
+(function(){
+  function setLang(l){document.getElementById('v-fr').hidden=(l!=='fr');document.getElementById('v-en').hidden=(l!=='en');document.documentElement.lang=l;try{localStorage.setItem('mgj-lang',l)}catch(e){}try{scrollTo(0,0)}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem('mgj-lang')}catch(e){}
+  var start=saved||((navigator.language||'fr').toLowerCase().indexOf('fr')===0?'fr':'en');
+  setLang(start);
+  document.addEventListener('click',function(e){var b=e.target&&e.target.closest?e.target.closest('[data-lang]'):null;if(b){e.preventDefault();setLang(b.getAttribute('data-lang'))}},true);
+})();
+[].forEach.call(document.querySelectorAll('a[href^="#"]'),function(a){a.addEventListener('click',function(e){var t=document.getElementById(a.getAttribute('href').slice(1));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+[].forEach.call(document.querySelectorAll('[data-copy]'),function(b){b.addEventListener('click',function(){
+  var el=document.getElementById(b.getAttribute('data-copy')),t=el.textContent,lab=b.textContent;
+  var sel=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){b.textContent=b.getAttribute('data-ok');setTimeout(function(){b.textContent=lab},1800)},sel)}else sel();
+})});
+
+(function(){
+  var b=document.createElement('button');b.type='button';b.className='totop';
+  b.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  function lab(){var en=document.documentElement.lang==='en';b.setAttribute('aria-label',en?'Back to top':'Revenir en haut');b.title=b.getAttribute('aria-label')}
+  lab();document.body.appendChild(b);
+  b.addEventListener('click',function(){try{scrollTo({top:0,behavior:'smooth'})}catch(e){scrollTo(0,0)}});
+  function onScroll(){b.classList.toggle('show',(window.scrollY||0)>700);lab();
+    var links=document.querySelectorAll('.nav-links a'),cur=null;
+    [].forEach.call(links,function(a){var t=document.getElementById(a.getAttribute('href').slice(1));if(t&&t.offsetParent!==null&&t.getBoundingClientRect().top<140)cur=a});
+    [].forEach.call(links,function(a){a.classList.toggle('on',a===cur)});}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+
+</body></html>
